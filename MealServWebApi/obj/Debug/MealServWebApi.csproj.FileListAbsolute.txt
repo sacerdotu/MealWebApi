@@ -1,0 +1,86 @@
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\MealServWebApi.dll.config
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\MealServWebApi.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\MealServWebApi.pdb
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\BusinessEntities.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\BusinessServices.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\EntityFramework.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\EntityFramework.SqlServer.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\Newtonsoft.Json.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\System.Net.Http.Formatting.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\System.Web.Http.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\System.Web.Http.WebHost.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\DataModel.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\AutoMapper.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\BusinessEntities.pdb
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\BusinessServices.pdb
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\EntityFramework.xml
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\EntityFramework.SqlServer.xml
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\Newtonsoft.Json.xml
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\System.Net.Http.Formatting.xml
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\System.Web.Http.xml
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\System.Web.Http.WebHost.xml
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\DataModel.pdb
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\AutoMapper.xml
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\obj\Debug\MealServWebApi.csprojResolveAssemblyReference.cache
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\obj\Debug\MealServWebApi.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\obj\Debug\MealServWebApi.pdb
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\Antlr3.Runtime.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\Microsoft.Practices.Unity.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\System.Web.Optimization.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\Unity.Mvc3.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\Unity.WebApi.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\WebGrease.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\Antlr3.Runtime.pdb
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\Microsoft.Practices.Unity.xml
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\System.Web.Optimization.xml
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\System.Web.Mvc.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\MealServWebApi\bin\System.Web.Mvc.xml
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\MealServWebApi.dll.config
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\MealServWebApi.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\MealServWebApi.pdb
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Antlr3.Runtime.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\BusinessEntities.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\BusinessServices.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\DataModel.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\EntityFramework.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\EntityFramework.SqlServer.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Microsoft.Practices.Unity.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Newtonsoft.Json.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\System.Net.Http.Formatting.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\System.Web.Http.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\System.Web.Http.WebHost.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\System.Web.Mvc.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\System.Web.Optimization.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Unity.Mvc3.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Unity.WebApi.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\WebGrease.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\AutoMapper.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\BusinessEntities.pdb
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\BusinessServices.pdb
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\DataModel.pdb
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Antlr3.Runtime.pdb
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\EntityFramework.xml
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\EntityFramework.SqlServer.xml
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Microsoft.Practices.Unity.xml
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\System.Web.Mvc.xml
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\System.Web.Optimization.xml
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Newtonsoft.Json.xml
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\System.Net.Http.Formatting.xml
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\System.Web.Http.xml
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\System.Web.Http.WebHost.xml
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\AutoMapper.xml
+C:\Users\george\Documents\MealWebApi\MealServWebApi\obj\Debug\MealServWebApi.csprojResolveAssemblyReference.cache
+C:\Users\george\Documents\MealWebApi\MealServWebApi\obj\Debug\MealServWebApi.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\obj\Debug\MealServWebApi.pdb

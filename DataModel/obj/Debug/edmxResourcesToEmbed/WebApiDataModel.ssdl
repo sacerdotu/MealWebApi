@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MealDBNewModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblMenu">
+    <Key>
+      <PropertyRef Name="MenuID" />
+    </Key>
+    <Property Name="MenuID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="Published" Type="bit" />
+    <Property Name="Locked" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblMenuItem">
+    <Key>
+      <PropertyRef Name="MenuItemID" />
+    </Key>
+    <Property Name="MenuItemID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MenuID" Type="bigint" />
+    <Property Name="ProviderMenuItemID" Type="bigint" />
+    <Property Name="SortIndex" Type="int" />
+  </EntityType>
+  <EntityType Name="tblMenuItemType">
+    <Key>
+      <PropertyRef Name="MenuItemTypeID" />
+    </Key>
+    <Property Name="MenuItemTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="tblProviderMenuItem">
+    <Key>
+      <PropertyRef Name="ProviderMenuItemID" />
+    </Key>
+    <Property Name="ProviderMenuItemID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="MenuItemTypeID" Type="int" />
+    <Property Name="LikeCount" Type="int" Nullable="false" />
+    <Property Name="DislikeCount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblTokens">
+    <Key>
+      <PropertyRef Name="TokenId" />
+    </Key>
+    <Property Name="TokenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="AuthToken" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="IssuedOn" Type="datetime" Nullable="false" />
+    <Property Name="ExpiresOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastLoginDateTime" Type="datetime" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblUserMenu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MenuItemID" Type="bigint" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Rating" Type="tinyint" />
+    <Property Name="Remark" Type="ntext" />
+    <Property Name="Published" Type="bit" />
+    <Property Name="Timestamp" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_tblMenuItem_tblMenu">
+    <End Role="tblMenu" Type="Self.tblMenu" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblMenuItem" Type="Self.tblMenuItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMenu">
+        <PropertyRef Name="MenuID" />
+      </Principal>
+      <Dependent Role="tblMenuItem">
+        <PropertyRef Name="MenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMenuItem_tblMenuItemType">
+    <End Role="tblMenuItemType" Type="Self.tblMenuItemType" Multiplicity="0..1" />
+    <End Role="tblProviderMenuItem" Type="Self.tblProviderMenuItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMenuItemType">
+        <PropertyRef Name="MenuItemTypeID" />
+      </Principal>
+      <Dependent Role="tblProviderMenuItem">
+        <PropertyRef Name="MenuItemTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMenuItem_tblProviderMenuItem">
+    <End Role="tblProviderMenuItem" Type="Self.tblProviderMenuItem" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblMenuItem" Type="Self.tblMenuItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProviderMenuItem">
+        <PropertyRef Name="ProviderMenuItemID" />
+      </Principal>
+      <Dependent Role="tblMenuItem">
+        <PropertyRef Name="ProviderMenuItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserMenu_tblMenuItem">
+    <End Role="tblMenuItem" Type="Self.tblMenuItem" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblUserMenu" Type="Self.tblUserMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMenuItem">
+        <PropertyRef Name="MenuItemID" />
+      </Principal>
+      <Dependent Role="tblUserMenu">
+        <PropertyRef Name="MenuItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserMenu_tblUser">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblUserMenu" Type="Self.tblUserMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="tblUserMenu">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tokens_User">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+    <End Role="tblTokens" Type="Self.tblTokens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="tblTokens">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MealDBNewModelStoreContainer">
+    <EntitySet Name="tblMenu" EntityType="Self.tblMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMenuItem" EntityType="Self.tblMenuItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMenuItemType" EntityType="Self.tblMenuItemType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblProviderMenuItem" EntityType="Self.tblProviderMenuItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTokens" EntityType="Self.tblTokens" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUserMenu" EntityType="Self.tblUserMenu" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tblMenuItem_tblMenu" Association="Self.FK_tblMenuItem_tblMenu">
+      <End Role="tblMenu" EntitySet="tblMenu" />
+      <End Role="tblMenuItem" EntitySet="tblMenuItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMenuItem_tblMenuItemType" Association="Self.FK_tblMenuItem_tblMenuItemType">
+      <End Role="tblMenuItemType" EntitySet="tblMenuItemType" />
+      <End Role="tblProviderMenuItem" EntitySet="tblProviderMenuItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMenuItem_tblProviderMenuItem" Association="Self.FK_tblMenuItem_tblProviderMenuItem">
+      <End Role="tblProviderMenuItem" EntitySet="tblProviderMenuItem" />
+      <End Role="tblMenuItem" EntitySet="tblMenuItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserMenu_tblMenuItem" Association="Self.FK_tblUserMenu_tblMenuItem">
+      <End Role="tblMenuItem" EntitySet="tblMenuItem" />
+      <End Role="tblUserMenu" EntitySet="tblUserMenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserMenu_tblUser" Association="Self.FK_tblUserMenu_tblUser">
+      <End Role="tblUser" EntitySet="tblUser" />
+      <End Role="tblUserMenu" EntitySet="tblUserMenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tokens_User" Association="Self.FK_Tokens_User">
+      <End Role="tblUser" EntitySet="tblUser" />
+      <End Role="tblTokens" EntitySet="tblTokens" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

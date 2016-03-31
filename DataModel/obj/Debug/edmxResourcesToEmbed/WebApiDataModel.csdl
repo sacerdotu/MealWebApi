@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MealDBNewModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblMenu">
+    <Key>
+      <PropertyRef Name="MenuID" />
+    </Key>
+    <Property Name="MenuID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Published" Type="Boolean" />
+    <Property Name="Locked" Type="Boolean" />
+    <NavigationProperty Name="tblMenuItems" Relationship="Self.FK_tblMenuItem_tblMenu" FromRole="tblMenu" ToRole="tblMenuItem" />
+  </EntityType>
+  <EntityType Name="tblMenuItem">
+    <Key>
+      <PropertyRef Name="MenuItemID" />
+    </Key>
+    <Property Name="MenuItemID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuID" Type="Int64" />
+    <Property Name="ProviderMenuItemID" Type="Int64" />
+    <Property Name="SortIndex" Type="Int32" />
+    <NavigationProperty Name="tblMenu" Relationship="Self.FK_tblMenuItem_tblMenu" FromRole="tblMenuItem" ToRole="tblMenu" />
+    <NavigationProperty Name="tblProviderMenuItem" Relationship="Self.FK_tblMenuItem_tblProviderMenuItem" FromRole="tblMenuItem" ToRole="tblProviderMenuItem" />
+    <NavigationProperty Name="tblUserMenus" Relationship="Self.FK_tblUserMenu_tblMenuItem" FromRole="tblMenuItem" ToRole="tblUserMenu" />
+  </EntityType>
+  <EntityType Name="tblMenuItemType">
+    <Key>
+      <PropertyRef Name="MenuItemTypeID" />
+    </Key>
+    <Property Name="MenuItemTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblProviderMenuItem" Relationship="Self.FK_tblMenuItem_tblMenuItemType" FromRole="tblMenuItemType" ToRole="tblProviderMenuItem" />
+  </EntityType>
+  <EntityType Name="tblProviderMenuItem">
+    <Key>
+      <PropertyRef Name="ProviderMenuItemID" />
+    </Key>
+    <Property Name="ProviderMenuItemID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MenuItemTypeID" Type="Int32" />
+    <Property Name="LikeCount" Type="Int32" Nullable="false" />
+    <Property Name="DislikeCount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblMenuItems" Relationship="Self.FK_tblMenuItem_tblProviderMenuItem" FromRole="tblProviderMenuItem" ToRole="tblMenuItem" />
+    <NavigationProperty Name="tblMenuItemType" Relationship="Self.FK_tblMenuItem_tblMenuItemType" FromRole="tblProviderMenuItem" ToRole="tblMenuItemType" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastLoginDateTime" Type="DateTime" Precision="3" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblUserMenus" Relationship="Self.FK_tblUserMenu_tblUser" FromRole="tblUser" ToRole="tblUserMenu" />
+    <NavigationProperty Name="tblTokens" Relationship="MealDBNewModel.FK_Tokens_User" FromRole="tblUser" ToRole="tblToken" />
+  </EntityType>
+  <EntityType Name="tblUserMenu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuItemID" Type="Int64" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="Rating" Type="Byte" />
+    <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Published" Type="Boolean" />
+    <Property Name="Timestamp" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblMenuItem" Relationship="Self.FK_tblUserMenu_tblMenuItem" FromRole="tblUserMenu" ToRole="tblMenuItem" />
+    <NavigationProperty Name="tblUser" Relationship="Self.FK_tblUserMenu_tblUser" FromRole="tblUserMenu" ToRole="tblUser" />
+  </EntityType>
+  <Association Name="FK_tblMenuItem_tblMenu">
+    <End Role="tblMenu" Type="Self.tblMenu" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblMenuItem" Type="Self.tblMenuItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMenu">
+        <PropertyRef Name="MenuID" />
+      </Principal>
+      <Dependent Role="tblMenuItem">
+        <PropertyRef Name="MenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMenuItem_tblProviderMenuItem">
+    <End Role="tblProviderMenuItem" Type="Self.tblProviderMenuItem" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblMenuItem" Type="Self.tblMenuItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProviderMenuItem">
+        <PropertyRef Name="ProviderMenuItemID" />
+      </Principal>
+      <Dependent Role="tblMenuItem">
+        <PropertyRef Name="ProviderMenuItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserMenu_tblMenuItem">
+    <End Role="tblMenuItem" Type="Self.tblMenuItem" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblUserMenu" Type="Self.tblUserMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMenuItem">
+        <PropertyRef Name="MenuItemID" />
+      </Principal>
+      <Dependent Role="tblUserMenu">
+        <PropertyRef Name="MenuItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMenuItem_tblMenuItemType">
+    <End Role="tblMenuItemType" Type="Self.tblMenuItemType" Multiplicity="0..1" />
+    <End Role="tblProviderMenuItem" Type="Self.tblProviderMenuItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMenuItemType">
+        <PropertyRef Name="MenuItemTypeID" />
+      </Principal>
+      <Dependent Role="tblProviderMenuItem">
+        <PropertyRef Name="MenuItemTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserMenu_tblUser">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblUserMenu" Type="Self.tblUserMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="tblUserMenu">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MealDBNewEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblMenus" EntityType="Self.tblMenu" />
+    <EntitySet Name="tblMenuItems" EntityType="Self.tblMenuItem" />
+    <EntitySet Name="tblMenuItemTypes" EntityType="Self.tblMenuItemType" />
+    <EntitySet Name="tblProviderMenuItem" EntityType="Self.tblProviderMenuItem" />
+    <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+    <EntitySet Name="tblUserMenus" EntityType="Self.tblUserMenu" />
+    <AssociationSet Name="FK_tblMenuItem_tblMenu" Association="Self.FK_tblMenuItem_tblMenu">
+      <End Role="tblMenu" EntitySet="tblMenus" />
+      <End Role="tblMenuItem" EntitySet="tblMenuItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMenuItem_tblProviderMenuItem" Association="Self.FK_tblMenuItem_tblProviderMenuItem">
+      <End Role="tblProviderMenuItem" EntitySet="tblProviderMenuItem" />
+      <End Role="tblMenuItem" EntitySet="tblMenuItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserMenu_tblMenuItem" Association="Self.FK_tblUserMenu_tblMenuItem">
+      <End Role="tblMenuItem" EntitySet="tblMenuItems" />
+      <End Role="tblUserMenu" EntitySet="tblUserMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMenuItem_tblMenuItemType" Association="Self.FK_tblMenuItem_tblMenuItemType">
+      <End Role="tblMenuItemType" EntitySet="tblMenuItemTypes" />
+      <End Role="tblProviderMenuItem" EntitySet="tblProviderMenuItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserMenu_tblUser" Association="Self.FK_tblUserMenu_tblUser">
+      <End Role="tblUser" EntitySet="tblUsers" />
+      <End Role="tblUserMenu" EntitySet="tblUserMenus" />
+    </AssociationSet>
+    <EntitySet Name="tblTokens" EntityType="MealDBNewModel.tblToken" />
+    <AssociationSet Name="FK_Tokens_User" Association="MealDBNewModel.FK_Tokens_User">
+      <End Role="tblUser" EntitySet="tblUsers" />
+      <End Role="tblToken" EntitySet="tblTokens" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tblToken">
+    <Key>
+      <PropertyRef Name="TokenId" />
+    </Key>
+    <Property Name="TokenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="AuthToken" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IssuedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ExpiresOn" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="tblUser" Relationship="MealDBNewModel.FK_Tokens_User" FromRole="tblToken" ToRole="tblUser" />
+  </EntityType>
+  <Association Name="FK_Tokens_User">
+    <End Type="MealDBNewModel.tblUser" Role="tblUser" Multiplicity="1" />
+    <End Type="MealDBNewModel.tblToken" Role="tblToken" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="tblToken">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

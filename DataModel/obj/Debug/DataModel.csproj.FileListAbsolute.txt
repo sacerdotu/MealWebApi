@@ -1,0 +1,20 @@
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\DataModel\bin\Debug\DataModel.dll.config
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\DataModel\bin\Debug\DataModel.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\DataModel\bin\Debug\DataModel.pdb
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\DataModel\bin\Debug\EntityFramework.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\DataModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\DataModel\bin\Debug\EntityFramework.xml
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\DataModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\DataModel\obj\Debug\DataModel.csprojResolveAssemblyReference.cache
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\DataModel\obj\Debug\DataModel.dll
+C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\DataModel\obj\Debug\DataModel.pdb
+C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\DataModel.dll.config
+C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\DataModel.dll
+C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\DataModel.pdb
+C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\EntityFramework.dll
+C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\EntityFramework.xml
+C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\george\Documents\MealWebApi\DataModel\obj\Debug\DataModel.csprojResolveAssemblyReference.cache
+C:\Users\george\Documents\MealWebApi\DataModel\obj\Debug\DataModel.dll
+C:\Users\george\Documents\MealWebApi\DataModel\obj\Debug\DataModel.pdb

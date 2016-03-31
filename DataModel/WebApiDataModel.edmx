@@ -1,0 +1,493 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MealDBNewModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblMenu">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Published" Type="bit" />
+          <Property Name="Locked" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblMenuItem">
+          <Key>
+            <PropertyRef Name="MenuItemID" />
+          </Key>
+          <Property Name="MenuItemID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuID" Type="bigint" />
+          <Property Name="ProviderMenuItemID" Type="bigint" />
+          <Property Name="SortIndex" Type="int" />
+        </EntityType>
+        <EntityType Name="tblMenuItemType">
+          <Key>
+            <PropertyRef Name="MenuItemTypeID" />
+          </Key>
+          <Property Name="MenuItemTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tblProviderMenuItem">
+          <Key>
+            <PropertyRef Name="ProviderMenuItemID" />
+          </Key>
+          <Property Name="ProviderMenuItemID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="MenuItemTypeID" Type="int" />
+          <Property Name="LikeCount" Type="int" Nullable="false" />
+          <Property Name="DislikeCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTokens">
+          <Key>
+            <PropertyRef Name="TokenId" />
+          </Key>
+          <Property Name="TokenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="AuthToken" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IssuedOn" Type="datetime" Nullable="false" />
+          <Property Name="ExpiresOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastLoginDateTime" Type="datetime" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblUserMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuItemID" Type="bigint" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Rating" Type="tinyint" />
+          <Property Name="Remark" Type="ntext" />
+          <Property Name="Published" Type="bit" />
+          <Property Name="Timestamp" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_tblMenuItem_tblMenu">
+          <End Role="tblMenu" Type="Self.tblMenu" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblMenuItem" Type="Self.tblMenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMenu">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="tblMenuItem">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMenuItem_tblMenuItemType">
+          <End Role="tblMenuItemType" Type="Self.tblMenuItemType" Multiplicity="0..1" />
+          <End Role="tblProviderMenuItem" Type="Self.tblProviderMenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMenuItemType">
+              <PropertyRef Name="MenuItemTypeID" />
+            </Principal>
+            <Dependent Role="tblProviderMenuItem">
+              <PropertyRef Name="MenuItemTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMenuItem_tblProviderMenuItem">
+          <End Role="tblProviderMenuItem" Type="Self.tblProviderMenuItem" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblMenuItem" Type="Self.tblMenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProviderMenuItem">
+              <PropertyRef Name="ProviderMenuItemID" />
+            </Principal>
+            <Dependent Role="tblMenuItem">
+              <PropertyRef Name="ProviderMenuItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserMenu_tblMenuItem">
+          <End Role="tblMenuItem" Type="Self.tblMenuItem" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserMenu" Type="Self.tblUserMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMenuItem">
+              <PropertyRef Name="MenuItemID" />
+            </Principal>
+            <Dependent Role="tblUserMenu">
+              <PropertyRef Name="MenuItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserMenu_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserMenu" Type="Self.tblUserMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblUserMenu">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tokens_User">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblTokens" Type="Self.tblTokens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblTokens">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MealDBNewModelStoreContainer">
+          <EntitySet Name="tblMenu" EntityType="Self.tblMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMenuItem" EntityType="Self.tblMenuItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMenuItemType" EntityType="Self.tblMenuItemType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProviderMenuItem" EntityType="Self.tblProviderMenuItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTokens" EntityType="Self.tblTokens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserMenu" EntityType="Self.tblUserMenu" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblMenuItem_tblMenu" Association="Self.FK_tblMenuItem_tblMenu">
+            <End Role="tblMenu" EntitySet="tblMenu" />
+            <End Role="tblMenuItem" EntitySet="tblMenuItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMenuItem_tblMenuItemType" Association="Self.FK_tblMenuItem_tblMenuItemType">
+            <End Role="tblMenuItemType" EntitySet="tblMenuItemType" />
+            <End Role="tblProviderMenuItem" EntitySet="tblProviderMenuItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMenuItem_tblProviderMenuItem" Association="Self.FK_tblMenuItem_tblProviderMenuItem">
+            <End Role="tblProviderMenuItem" EntitySet="tblProviderMenuItem" />
+            <End Role="tblMenuItem" EntitySet="tblMenuItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserMenu_tblMenuItem" Association="Self.FK_tblUserMenu_tblMenuItem">
+            <End Role="tblMenuItem" EntitySet="tblMenuItem" />
+            <End Role="tblUserMenu" EntitySet="tblUserMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserMenu_tblUser" Association="Self.FK_tblUserMenu_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblUserMenu" EntitySet="tblUserMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tokens_User" Association="Self.FK_Tokens_User">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblTokens" EntitySet="tblTokens" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MealDBNewModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblMenu">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Published" Type="Boolean" />
+          <Property Name="Locked" Type="Boolean" />
+          <NavigationProperty Name="tblMenuItems" Relationship="Self.FK_tblMenuItem_tblMenu" FromRole="tblMenu" ToRole="tblMenuItem" />
+        </EntityType>
+        <EntityType Name="tblMenuItem">
+          <Key>
+            <PropertyRef Name="MenuItemID" />
+          </Key>
+          <Property Name="MenuItemID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuID" Type="Int64" />
+          <Property Name="ProviderMenuItemID" Type="Int64" />
+          <Property Name="SortIndex" Type="Int32" />
+          <NavigationProperty Name="tblMenu" Relationship="Self.FK_tblMenuItem_tblMenu" FromRole="tblMenuItem" ToRole="tblMenu" />
+          <NavigationProperty Name="tblProviderMenuItem" Relationship="Self.FK_tblMenuItem_tblProviderMenuItem" FromRole="tblMenuItem" ToRole="tblProviderMenuItem" />
+          <NavigationProperty Name="tblUserMenus" Relationship="Self.FK_tblUserMenu_tblMenuItem" FromRole="tblMenuItem" ToRole="tblUserMenu" />
+        </EntityType>
+        <EntityType Name="tblMenuItemType">
+          <Key>
+            <PropertyRef Name="MenuItemTypeID" />
+          </Key>
+          <Property Name="MenuItemTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblProviderMenuItem" Relationship="Self.FK_tblMenuItem_tblMenuItemType" FromRole="tblMenuItemType" ToRole="tblProviderMenuItem" />
+        </EntityType>
+        <EntityType Name="tblProviderMenuItem">
+          <Key>
+            <PropertyRef Name="ProviderMenuItemID" />
+          </Key>
+          <Property Name="ProviderMenuItemID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MenuItemTypeID" Type="Int32" />
+          <Property Name="LikeCount" Type="Int32" Nullable="false" />
+          <Property Name="DislikeCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblMenuItems" Relationship="Self.FK_tblMenuItem_tblProviderMenuItem" FromRole="tblProviderMenuItem" ToRole="tblMenuItem" />
+          <NavigationProperty Name="tblMenuItemType" Relationship="Self.FK_tblMenuItem_tblMenuItemType" FromRole="tblProviderMenuItem" ToRole="tblMenuItemType" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastLoginDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblUserMenus" Relationship="Self.FK_tblUserMenu_tblUser" FromRole="tblUser" ToRole="tblUserMenu" />
+          <NavigationProperty Name="tblTokens" Relationship="MealDBNewModel.FK_Tokens_User" FromRole="tblUser" ToRole="tblToken" />
+        </EntityType>
+        <EntityType Name="tblUserMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuItemID" Type="Int64" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Rating" Type="Byte" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Published" Type="Boolean" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblMenuItem" Relationship="Self.FK_tblUserMenu_tblMenuItem" FromRole="tblUserMenu" ToRole="tblMenuItem" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblUserMenu_tblUser" FromRole="tblUserMenu" ToRole="tblUser" />
+        </EntityType>
+        <Association Name="FK_tblMenuItem_tblMenu">
+          <End Role="tblMenu" Type="Self.tblMenu" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblMenuItem" Type="Self.tblMenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMenu">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="tblMenuItem">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMenuItem_tblProviderMenuItem">
+          <End Role="tblProviderMenuItem" Type="Self.tblProviderMenuItem" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblMenuItem" Type="Self.tblMenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProviderMenuItem">
+              <PropertyRef Name="ProviderMenuItemID" />
+            </Principal>
+            <Dependent Role="tblMenuItem">
+              <PropertyRef Name="ProviderMenuItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserMenu_tblMenuItem">
+          <End Role="tblMenuItem" Type="Self.tblMenuItem" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserMenu" Type="Self.tblUserMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMenuItem">
+              <PropertyRef Name="MenuItemID" />
+            </Principal>
+            <Dependent Role="tblUserMenu">
+              <PropertyRef Name="MenuItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMenuItem_tblMenuItemType">
+          <End Role="tblMenuItemType" Type="Self.tblMenuItemType" Multiplicity="0..1" />
+          <End Role="tblProviderMenuItem" Type="Self.tblProviderMenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMenuItemType">
+              <PropertyRef Name="MenuItemTypeID" />
+            </Principal>
+            <Dependent Role="tblProviderMenuItem">
+              <PropertyRef Name="MenuItemTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserMenu_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserMenu" Type="Self.tblUserMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblUserMenu">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MealDBNewEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblMenus" EntityType="Self.tblMenu" />
+          <EntitySet Name="tblMenuItems" EntityType="Self.tblMenuItem" />
+          <EntitySet Name="tblMenuItemTypes" EntityType="Self.tblMenuItemType" />
+          <EntitySet Name="tblProviderMenuItem" EntityType="Self.tblProviderMenuItem" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+          <EntitySet Name="tblUserMenus" EntityType="Self.tblUserMenu" />
+          <AssociationSet Name="FK_tblMenuItem_tblMenu" Association="Self.FK_tblMenuItem_tblMenu">
+            <End Role="tblMenu" EntitySet="tblMenus" />
+            <End Role="tblMenuItem" EntitySet="tblMenuItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMenuItem_tblProviderMenuItem" Association="Self.FK_tblMenuItem_tblProviderMenuItem">
+            <End Role="tblProviderMenuItem" EntitySet="tblProviderMenuItem" />
+            <End Role="tblMenuItem" EntitySet="tblMenuItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserMenu_tblMenuItem" Association="Self.FK_tblUserMenu_tblMenuItem">
+            <End Role="tblMenuItem" EntitySet="tblMenuItems" />
+            <End Role="tblUserMenu" EntitySet="tblUserMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMenuItem_tblMenuItemType" Association="Self.FK_tblMenuItem_tblMenuItemType">
+            <End Role="tblMenuItemType" EntitySet="tblMenuItemTypes" />
+            <End Role="tblProviderMenuItem" EntitySet="tblProviderMenuItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserMenu_tblUser" Association="Self.FK_tblUserMenu_tblUser">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblUserMenu" EntitySet="tblUserMenus" />
+          </AssociationSet>
+          <EntitySet Name="tblTokens" EntityType="MealDBNewModel.tblToken" />
+          <AssociationSet Name="FK_Tokens_User" Association="MealDBNewModel.FK_Tokens_User">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblToken" EntitySet="tblTokens" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblToken">
+          <Key>
+            <PropertyRef Name="TokenId" />
+          </Key>
+          <Property Name="TokenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="AuthToken" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IssuedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExpiresOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblUser" Relationship="MealDBNewModel.FK_Tokens_User" FromRole="tblToken" ToRole="tblUser" />
+        </EntityType>
+        <Association Name="FK_Tokens_User">
+          <End Type="MealDBNewModel.tblUser" Role="tblUser" Multiplicity="1" />
+          <End Type="MealDBNewModel.tblToken" Role="tblToken" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblToken">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MealDBNewModelStoreContainer" CdmEntityContainer="MealDBNewEntities">
+          <EntitySetMapping Name="tblMenus">
+            <EntityTypeMapping TypeName="MealDBNewModel.tblMenu">
+              <MappingFragment StoreEntitySet="tblMenu">
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Published" ColumnName="Published" />
+                <ScalarProperty Name="Locked" ColumnName="Locked" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMenuItems">
+            <EntityTypeMapping TypeName="MealDBNewModel.tblMenuItem">
+              <MappingFragment StoreEntitySet="tblMenuItem">
+                <ScalarProperty Name="MenuItemID" ColumnName="MenuItemID" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="ProviderMenuItemID" ColumnName="ProviderMenuItemID" />
+                <ScalarProperty Name="SortIndex" ColumnName="SortIndex" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMenuItemTypes">
+            <EntityTypeMapping TypeName="MealDBNewModel.tblMenuItemType">
+              <MappingFragment StoreEntitySet="tblMenuItemType">
+                <ScalarProperty Name="MenuItemTypeID" ColumnName="MenuItemTypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProviderMenuItem">
+            <EntityTypeMapping TypeName="MealDBNewModel.tblProviderMenuItem">
+              <MappingFragment StoreEntitySet="tblProviderMenuItem">
+                <ScalarProperty Name="ProviderMenuItemID" ColumnName="ProviderMenuItemID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MenuItemTypeID" ColumnName="MenuItemTypeID" />
+                <ScalarProperty Name="LikeCount" ColumnName="LikeCount" />
+                <ScalarProperty Name="DislikeCount" ColumnName="DislikeCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="MealDBNewModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="LastLoginDateTime" ColumnName="LastLoginDateTime" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserMenus">
+            <EntityTypeMapping TypeName="MealDBNewModel.tblUserMenu">
+              <MappingFragment StoreEntitySet="tblUserMenu">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MenuItemID" ColumnName="MenuItemID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Published" ColumnName="Published" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTokens">
+            <EntityTypeMapping TypeName="MealDBNewModel.tblToken">
+              <MappingFragment StoreEntitySet="tblTokens">
+                <ScalarProperty Name="ExpiresOn" ColumnName="ExpiresOn" />
+                <ScalarProperty Name="IssuedOn" ColumnName="IssuedOn" />
+                <ScalarProperty Name="AuthToken" ColumnName="AuthToken" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
