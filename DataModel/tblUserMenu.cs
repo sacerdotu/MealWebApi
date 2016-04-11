@@ -11,11 +11,9 @@ namespace DataModel
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class tblUserMenu
     {
-        [Key]
         public long ID { get; set; }
         public Nullable<long> MenuItemID { get; set; }
         public Nullable<int> UserID { get; set; }

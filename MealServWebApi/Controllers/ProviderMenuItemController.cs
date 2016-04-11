@@ -11,9 +11,11 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using BusinessServices;
 using BusinessEntities;
+using MealServWebApi.Filters;
 
 namespace MealServWebApi.Controllers
 {
+    //[ApiAuthenticationFilter]
     public class ProviderMenuItemController : ApiController
     {
         private readonly IProviderMenuServices _providerServices;
@@ -29,8 +31,23 @@ namespace MealServWebApi.Controllers
         }
 
         #endregion
+        [HttpGet]
+        //[ActionName("allp")]
+        [Route("api/providermenuitem/today")]
+        public HttpResponseMessage TodayProf()
+        {
+            var products = _providerServices.GetAllProducts().Where(product => product.Date.Date == DateTime.Now.Date);
+            if (products != null)
+            {
+                var productEntities = products as List<ProviderMenuItemEntity> ?? products.ToList();
+                if (productEntities.Any())
+                    return Request.CreateResponse(HttpStatusCode.OK, productEntities);
+            }
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Products not found");
+        }
 
         // GET api/product
+        // [ApiAuthenticationFilter(false)]
         public HttpResponseMessage Get()
         {
             var products = _providerServices.GetAllProducts();
@@ -44,6 +61,7 @@ namespace MealServWebApi.Controllers
         }
 
         // GET api/product/5
+        // [ApiAuthenticationFilter(true)]
         public HttpResponseMessage Get(int id)
         {
             var product = _providerServices.GetProductById(id);
@@ -64,6 +82,27 @@ namespace MealServWebApi.Controllers
             if (id  > 0)
             {
                 return _providerServices.UpdateProduct(id, productEntity);
+            }
+            return false;
+        }
+
+        [HttpPut]
+        [Route("api/providermenuitem/like/{id}")]
+        public bool Like(int id)
+        {
+            if (id > 0)
+            {
+                return _providerServices.LikeProduct(id);
+            }
+            return false;
+        }
+        [HttpPut]
+        [Route("api/providermenuitem/dislike/{id}")]
+        public bool Dislike(int id)
+        {
+            if (id > 0)
+            {
+                return _providerServices.DislikeProduct(id);
             }
             return false;
         }

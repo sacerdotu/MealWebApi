@@ -56,6 +56,24 @@ namespace BusinessServices
         }
 
         /// <summary>
+        /// Fetches all the products.
+        /// </summary>
+        /// <returns></returns>
+        //[HttpGet]
+        public IEnumerable<BusinessEntities.ProviderMenuItemEntity> GetAllProductsFromToday()
+        {
+            var products = _unitOfWork.ProviderMenuItemRepository.GetAll().ToList();
+            if (products.Any())
+            {
+                Mapper.CreateMap<tblProviderMenuItem, ProviderMenuItemEntity>();
+                var productsModel = Mapper.Map<List<tblProviderMenuItem>, List<ProviderMenuItemEntity>>(products);
+                return productsModel;
+            }
+            return null;
+        }
+
+
+        /// <summary>
         /// Creates a product
         /// </summary>
         /// <param name="productEntity"></param>
@@ -92,6 +110,48 @@ namespace BusinessServices
                     if (product != null)
                     {
                         product.Name = productEntity.Name;
+                        _unitOfWork.ProviderMenuItemRepository.Update(product);
+                        _unitOfWork.Save();
+                        scope.Complete();
+                        success = true;
+                    }
+                }
+            }
+            return success;
+        }
+
+        public bool LikeProduct(int productId)
+        {
+            var success = false;
+            if (productId != 0)
+            {
+                using (var scope = new TransactionScope())
+                {
+                    var product = _unitOfWork.ProviderMenuItemRepository.GetByID(productId);
+                    if (product != null)
+                    {
+                        product.LikeCount += 1;
+                        _unitOfWork.ProviderMenuItemRepository.Update(product);
+                        _unitOfWork.Save();
+                        scope.Complete();
+                        success = true;
+                    }
+                }
+            }
+            return success;
+        }
+
+        public bool DislikeProduct(int productId)
+        {
+            var success = false;
+            if (productId != 0)
+            {
+                using (var scope = new TransactionScope())
+                {
+                    var product = _unitOfWork.ProviderMenuItemRepository.GetByID(productId);
+                    if (product != null)
+                    {
+                        product.DislikeCount += 1;
                         _unitOfWork.ProviderMenuItemRepository.Update(product);
                         _unitOfWork.Save();
                         scope.Complete();

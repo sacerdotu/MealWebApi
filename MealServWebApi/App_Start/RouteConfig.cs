@@ -18,6 +18,11 @@ namespace MealServWebApi.App_Start
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            //routes.MapRoute(
+            //    name: "Default2",
+            //    url: "api/{controller}/public/{category}/{id}",
+            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            //);
         }
     }
 }

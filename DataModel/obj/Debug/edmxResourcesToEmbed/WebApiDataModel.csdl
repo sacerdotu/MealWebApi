@@ -42,6 +42,7 @@
     <Property Name="DislikeCount" Type="Int32" Nullable="false" />
     <NavigationProperty Name="tblMenuItems" Relationship="Self.FK_tblMenuItem_tblProviderMenuItem" FromRole="tblProviderMenuItem" ToRole="tblMenuItem" />
     <NavigationProperty Name="tblMenuItemType" Relationship="Self.FK_tblMenuItem_tblMenuItemType" FromRole="tblProviderMenuItem" ToRole="tblMenuItemType" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="tblUser">
     <Key>
@@ -170,6 +171,7 @@
       <End Role="tblUser" EntitySet="tblUsers" />
       <End Role="tblToken" EntitySet="tblTokens" />
     </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="MealDBNewModel.sysdiagram" />
   </EntityContainer>
   <EntityType Name="tblToken">
     <Key>
@@ -194,4 +196,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
 </Schema>

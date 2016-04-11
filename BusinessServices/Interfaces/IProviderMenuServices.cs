@@ -13,6 +13,8 @@ namespace BusinessServices
         IEnumerable<ProviderMenuItemEntity> GetAllProducts();
         long CreateProduct(ProviderMenuItemEntity productEntity);
         bool UpdateProduct(int productId, ProviderMenuItemEntity productEntity);
+        bool LikeProduct(int productId);
+        bool DislikeProduct(int productId);
         bool DeleteProduct(int productId);
     }
 }

@@ -11,11 +11,9 @@ namespace DataModel
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class tblToken
     {
-        [Key]
         public int TokenId { get; set; }
         public int UserId { get; set; }
         public string AuthToken { get; set; }

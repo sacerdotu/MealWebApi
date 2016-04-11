@@ -11,7 +11,6 @@ namespace DataModel
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class tblMenuItemType
     {
@@ -19,7 +18,7 @@ namespace DataModel
         {
             this.tblProviderMenuItem = new HashSet<tblProviderMenuItem>();
         }
-     [Key]
+    
         public int MenuItemTypeID { get; set; }
         public string Name { get; set; }
     

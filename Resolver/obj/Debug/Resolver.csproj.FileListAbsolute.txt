@@ -1,0 +1,13 @@
+C:\Users\george\Documents\MealWebApi\Resolver\bin\Debug\Resolver.dll
+C:\Users\george\Documents\MealWebApi\Resolver\bin\Debug\Resolver.pdb
+C:\Users\george\Documents\MealWebApi\Resolver\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\george\Documents\MealWebApi\Resolver\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\george\Documents\MealWebApi\Resolver\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Users\george\Documents\MealWebApi\Resolver\bin\Debug\Unity.Mvc3.dll
+C:\Users\george\Documents\MealWebApi\Resolver\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\george\Documents\MealWebApi\Resolver\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\george\Documents\MealWebApi\Resolver\bin\Debug\Microsoft.Practices.Unity.xml
+C:\Users\george\Documents\MealWebApi\Resolver\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\george\Documents\MealWebApi\Resolver\obj\Debug\Resolver.csprojResolveAssemblyReference.cache
+C:\Users\george\Documents\MealWebApi\Resolver\obj\Debug\Resolver.dll
+C:\Users\george\Documents\MealWebApi\Resolver\obj\Debug\Resolver.pdb

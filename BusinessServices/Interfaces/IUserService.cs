@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataModel
+namespace BusinessServices.Interfaces
 {
-    public class Class1
+    public interface IUserServices
     {
+        int Authenticate(string userName, string password);
     }
 }

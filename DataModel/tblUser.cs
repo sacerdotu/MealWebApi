@@ -11,7 +11,6 @@ namespace DataModel
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class tblUser
     {
@@ -20,7 +19,7 @@ namespace DataModel
             this.tblUserMenus = new HashSet<tblUserMenu>();
             this.tblTokens = new HashSet<tblToken>();
         }
-    [Key]
+    
         public int UserID { get; set; }
         public string UserName { get; set; }
         public string FullName { get; set; }

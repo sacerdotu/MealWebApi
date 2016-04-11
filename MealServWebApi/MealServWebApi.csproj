@@ -128,6 +128,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\ProviderMenuItemController.cs" />
+    <Compile Include="Filters\ApiAuthenticationFilter.cs" />
+    <Compile Include="Filters\BasicAuthenticationIdentity.cs" />
+    <Compile Include="Filters\GenericAuthenticationFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -162,6 +165,10 @@
     <ProjectReference Include="..\DataModel\DataModel.csproj">
       <Project>{471fd342-bf80-46a0-9713-397f0b1f7e30}</Project>
       <Name>DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Resolver\Resolver.csproj">
+      <Project>{2232236e-08b1-4c57-9978-84ebaeb0fec0}</Project>
+      <Name>Resolver</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -11,7 +11,6 @@ namespace DataModel
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class tblProviderMenuItem
     {
@@ -19,13 +18,14 @@ namespace DataModel
         {
             this.tblMenuItems = new HashSet<tblMenuItem>();
         }
-    [Key]
+    
         public long ProviderMenuItemID { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
         public Nullable<int> MenuItemTypeID { get; set; }
         public int LikeCount { get; set; }
         public int DislikeCount { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
     
         public virtual ICollection<tblMenuItem> tblMenuItems { get; set; }
         public virtual tblMenuItemType tblMenuItemType { get; set; }

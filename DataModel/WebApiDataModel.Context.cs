@@ -22,15 +22,16 @@ namespace DataModel
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //throw new UnintentionalCodeFirstException();
+            throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tblMenu> tblMenu { get; set; }
-        public virtual DbSet<tblMenuItem> tblMenuItem { get; set; }
-        public virtual DbSet<tblMenuItemType> tblMenuItemType { get; set; }
+        public virtual DbSet<tblMenu> tblMenus { get; set; }
+        public virtual DbSet<tblMenuItem> tblMenuItems { get; set; }
+        public virtual DbSet<tblMenuItemType> tblMenuItemTypes { get; set; }
         public virtual DbSet<tblProviderMenuItem> tblProviderMenuItem { get; set; }
-        public virtual DbSet<tblUser> tblUser { get; set; }
-        public virtual DbSet<tblUserMenu> tblUserMenu { get; set; }
+        public virtual DbSet<tblUser> tblUsers { get; set; }
+        public virtual DbSet<tblUserMenu> tblUserMenus { get; set; }
         public virtual DbSet<tblToken> tblTokens { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

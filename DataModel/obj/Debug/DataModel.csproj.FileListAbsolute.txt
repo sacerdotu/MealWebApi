@@ -13,8 +13,15 @@ C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\DataModel.dll
 C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\DataModel.pdb
 C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\EntityFramework.dll
 C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\Resolver.dll
+C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\Resolver.pdb
 C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\EntityFramework.xml
 C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\Microsoft.Practices.Unity.xml
+C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\george\Documents\MealWebApi\DataModel\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 C:\Users\george\Documents\MealWebApi\DataModel\obj\Debug\DataModel.csprojResolveAssemblyReference.cache
 C:\Users\george\Documents\MealWebApi\DataModel\obj\Debug\DataModel.dll
 C:\Users\george\Documents\MealWebApi\DataModel\obj\Debug\DataModel.pdb

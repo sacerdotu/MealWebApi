@@ -11,7 +11,6 @@ namespace DataModel
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class tblMenu
     {
@@ -20,7 +19,6 @@ namespace DataModel
             this.tblMenuItems = new HashSet<tblMenuItem>();
         }
     
-        [Key]
         public long MenuID { get; set; }
         public System.DateTime Date { get; set; }
         public Nullable<bool> Published { get; set; }

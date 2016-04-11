@@ -3,3 +3,7 @@ C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\BusinessEnt
 C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\BusinessEntities\obj\Debug\BusinessEntities.csprojResolveAssemblyReference.cache
 C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\BusinessEntities\obj\Debug\BusinessEntities.dll
 C:\Users\george\Documents\Visual Studio 2013\Projects\MealServWebApi\BusinessEntities\obj\Debug\BusinessEntities.pdb
+C:\Users\george\Documents\MealWebApi\BusinessEntities\bin\Debug\BusinessEntities.dll
+C:\Users\george\Documents\MealWebApi\BusinessEntities\bin\Debug\BusinessEntities.pdb
+C:\Users\george\Documents\MealWebApi\BusinessEntities\obj\Debug\BusinessEntities.dll
+C:\Users\george\Documents\MealWebApi\BusinessEntities\obj\Debug\BusinessEntities.pdb

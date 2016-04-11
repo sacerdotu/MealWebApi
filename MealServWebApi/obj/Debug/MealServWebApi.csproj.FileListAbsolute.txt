@@ -55,6 +55,7 @@ C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Microsoft.Practices.Unit
 C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Microsoft.Practices.Unity.dll
 C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Newtonsoft.Json.dll
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Resolver.dll
 C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\System.Net.Http.Formatting.dll
 C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\System.Web.Http.dll
 C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\System.Web.Http.WebHost.dll
@@ -67,6 +68,7 @@ C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\AutoMapper.dll
 C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\BusinessEntities.pdb
 C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\BusinessServices.pdb
 C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\DataModel.pdb
+C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Resolver.pdb
 C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\Antlr3.Runtime.pdb
 C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\EntityFramework.xml
 C:\Users\george\Documents\MealWebApi\MealServWebApi\bin\EntityFramework.SqlServer.xml
